@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import Home from './Home';
-import Search from './Search';
+import Home from '../screens/Home';
+import Search from '../screens/Search';
 
 const Contents = () => (
   <Router>
