@@ -1,10 +1,11 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
+import Contents from './screens/Contents';
+import './App.css';
 
 function App() {
   return (
-    <div>
-      App Placeholder
-    </div>
+    <Contents />
   );
 }
 
