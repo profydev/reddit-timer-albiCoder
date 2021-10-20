@@ -7,12 +7,12 @@ const Navigation = styled.header`
   display: flex;
   justify-content: space-between;
   line-height: 50px;
-  padding: 0 2.5rem;
+  margin: 0 2.5rem;
   align-items: center;
   font-size: .5rem;
 `;
 const Logo = styled.div`
-  width: 150px;
+  width: 75px;
   height: 18px;
   `;
 const Links = styled.div`
