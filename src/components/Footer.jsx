@@ -8,11 +8,10 @@ const FootNav = styled.footer`
   height: 50px;
   margin: 0 7.84rem;
   align-items: center;
-  font-size: .42rem;
+  font-size: .4375rem;
 `;
 const FootLink = styled.div`
   width: 3.5rem;
-  
 `;
 const RedditLogo = styled.div`
   width: 1.1rem

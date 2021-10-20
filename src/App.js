@@ -3,11 +3,14 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import Page from './core/Page';
+import MyThemeProvider from './core/MyThemeProvider';
 
 function App() {
   return (
     <Router>
-      <Page />
+      <MyThemeProvider>
+        <Page />
+      </MyThemeProvider>
     </Router>
   );
 }
