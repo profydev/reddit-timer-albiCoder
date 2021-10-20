@@ -33,7 +33,7 @@ const Header = () => (
       </Logo>
     </Link>
     <Links>
-      <Link to="/search">
+      <Link to="/search/javascript">
         Search
       </Link>
       <Link to="/#how-it-works">
