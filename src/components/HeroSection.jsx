@@ -24,12 +24,19 @@ const Subheader = styled.p`
   position: relative;
 `;
 const SearchButton = styled.button`
-display: none;
-
+  font-size: .441rem;
+  background-color: #FDB755;
+  border-radius: .125rem;
+  color: #f4f4f4;
+  border: solid .2rem #fdb755;
+  padding: .1rem .33rem;
+  font-weight: 500;
+  cursor: pointer;
 `;
-const JavascriptText = styled.h5`
-display: none;
-
+const JavascriptText = styled.p`
+  font-size: .5rem;
+  top: 1rem;
+  position: relative;
 `;
 const Table = styled.div`
   display: none;
