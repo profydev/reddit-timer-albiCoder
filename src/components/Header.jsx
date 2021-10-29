@@ -2,23 +2,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
+import SROnly from './SROnly.style';
 
 const Navigation = styled.header`
   display: flex;
   justify-content: space-between;
-  line-height: 50px;
-  margin: 0 2.5rem;
   align-items: center;
-  font-size: .5rem;
+  height: 10rem;
+  padding: 0 8rem;
 `;
 const Logo = styled.div`
-  width: 75px;
-  height: 18px;
+  width: 15rem;
+  height: 3.6rem;
   `;
 const Links = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 8.05rem;
+  width: 26rem;
+  letter-spacing: .05rem;
+  font-size: 1.5rem;
 `;
 const Img = styled.img`
   display: flex;
@@ -31,6 +33,7 @@ const Header = () => (
       <Logo>
         <Img src="images/logo.svg" alt="reddit logo" />
       </Logo>
+      <SROnly>logo.svg</SROnly>
     </Link>
     <Links>
       <Link to="/search/javascript">

@@ -6,16 +6,16 @@ import { Link } from 'react-router-dom';
 const FootNav = styled.footer`
   display: flex;
   justify-content: space-between;
-  height: 50px;
-  margin: 0 7.84rem;
+  height: 10rem;
   align-items: center;
-  font-size: .4375rem;
+  padding: 0 25rem;
+  font-size: 1.4rem;
 `;
 const FootLink = styled.div`
-  width: 3.5rem;
+  width: 11rem;
 `;
 const RedditLogo = styled.div`
-  width: 1.1rem
+  
 `;
 const Img = styled.img`
   width: 100%;
