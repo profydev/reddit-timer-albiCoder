@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router-dom';
@@ -25,7 +26,7 @@ const setup = (initialPath = '/') => {
   );
   return { history };
 };
-const cases = [['Button redirects', 'button', /show me the best time/i],
+const cases = [['Button redirects', 'link', /show me the best time/i],
   ['Table image redirects', 'link', /table/i]];
 describe('hero section', () => {
   test.each(cases)('%s to search page', (testTitle, elementRole, regex) => {
