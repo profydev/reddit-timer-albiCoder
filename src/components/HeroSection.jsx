@@ -1,9 +1,8 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
 import styled from '@emotion/styled';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import Post from './Post';
 import SROnly from './SROnly.style';
 import config from '../config';
 
@@ -32,7 +31,7 @@ font-size: 1.6rem;
 top: -4.1rem;
   position: relative;
 `;
-const SearchButton = styled.button`
+const SearchButton = styled(Link)`
 font-size: 1.4rem;
 background-color: #FDB755;
 border-radius: .5rem;
@@ -58,49 +57,28 @@ const Table = styled(Link)`
 const TableImg = styled.img`
   width: 100%;
 `;
-const Posts = styled.div`
-  display: none;
 
-`;
-const Post1 = {
-  title: '',
-  content: '',
-};
-const Post2 = {
-  title: '',
-  content: '',
-};
-const HeroSection = () => {
-  const history = useHistory();
-  function handleClick() {
-    history.push(`/search/${config.defaultSubreddit}`);
-  }
-  return (
-    <HomePageContent>
-      <Search>
-        <Headline>
-          No reactions to your reddit posts?
-        </Headline>
-        <Subheader>
-          Great timing, great results! Find the best time to post on your subreddit.
-        </Subheader>
-        <SearchButton onClick={handleClick}>
-          SHOW ME THE BEST TIME
-        </SearchButton>
-        <JavascriptText to={`/search/${config.defaultSubreddit}`}>
-          r/javascript
-        </JavascriptText>
-      </Search>
-      <Table to={`/search/${config.defaultSubreddit}`}>
-        <TableImg src="images/table.png" alt="table" />
-        <SROnly>Table</SROnly>
-      </Table>
-      <Posts>
-        <Post title={Post1.title} content={Post1.content} />
-        <Post title={Post2.title} content={Post2.content} />
-      </Posts>
-    </HomePageContent>
-  );
-};
+const HeroSection = () => (
+  <HomePageContent>
+    <Search>
+      <Headline>
+        No reactions to your reddit posts?
+      </Headline>
+      <Subheader>
+        Great timing, great results! Find the best time to post on your subreddit.
+      </Subheader>
+      <SearchButton to={`/search/${config.defaultSubreddit}`}>
+        SHOW ME THE BEST TIME
+      </SearchButton>
+      <JavascriptText to={`/search/${config.defaultSubreddit}`}>
+        r/javascript
+      </JavascriptText>
+    </Search>
+    <Table to={`/search/${config.defaultSubreddit}`}>
+      <TableImg src="images/table.png" alt="table" />
+      <SROnly>Table</SROnly>
+    </Table>
+  </HomePageContent>
+);
 
 export default HeroSection;

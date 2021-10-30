@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import styled from '@emotion/styled';
 
 const SROnly = styled.span`
