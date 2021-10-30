@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import Post from './Post';
 import SROnly from './SROnly.style';
+import config from '../config';
 
 const HomePageContent = styled.main`
   display: flex;
@@ -43,7 +44,7 @@ cursor: pointer;
 position: relative;
 top: -1.1rem;
 `;
-const JavascriptText = styled.p`
+const JavascriptText = styled(Link)`
 font-size: 1.6rem;
 top: 2rem;
 position: relative;
@@ -72,7 +73,7 @@ const Post2 = {
 const HeroSection = () => {
   const history = useHistory();
   function handleClick() {
-    history.push('/search/javascript');
+    history.push(`/search/${config.defaultSubreddit}`);
   }
   return (
     <HomePageContent>
@@ -86,11 +87,11 @@ const HeroSection = () => {
         <SearchButton onClick={handleClick}>
           SHOW ME THE BEST TIME
         </SearchButton>
-        <JavascriptText>
+        <JavascriptText to={`/search/${config.defaultSubreddit}`}>
           r/javascript
         </JavascriptText>
       </Search>
-      <Table to="/search/javascript">
+      <Table to={`/search/${config.defaultSubreddit}`}>
         <TableImg src="images/table.png" alt="table" />
         <SROnly>Table</SROnly>
       </Table>

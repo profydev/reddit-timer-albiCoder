@@ -2,7 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
+
 import SROnly from './SROnly.style';
+import config from '../config';
 
 const Navigation = styled.header`
   display: flex;
@@ -36,7 +38,7 @@ const Header = () => (
       <SROnly>logo.svg</SROnly>
     </Link>
     <Links>
-      <Link to="/search/javascript">
+      <Link to={`/search/${config.defaultSubreddit}`}>
         Search
       </Link>
       <Link to="/#how-it-works">
