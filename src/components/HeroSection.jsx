@@ -11,7 +11,6 @@ const HomePageContent = styled.main`
   flex-direction: column;
   align-items: center;
   margin-bottom: 4rem;
-  height: 70vh;
 `;
 const Search = styled.div`
   display: flex;
