@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Bitter';
-  src: local('Bitter'), url(./fonts/Bitter/static/Bitter-Regular.ttf) format('truetype');
+  font-family: Bitter;
+  src: local(Bitter), url(./fonts/Bitter/static/Bitter-Regular.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';

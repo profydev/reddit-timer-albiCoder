@@ -1,11 +1,9 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
+import HeroSection from '../components/HeroSection';
 
-const Home = () => {
-  const message = 'Home Page';
-  return (
-    <div>{message}</div>
-  );
-};
+const Home = () => (
+  <HeroSection />
+);
 
 export default Home;

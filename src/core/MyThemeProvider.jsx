@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import PropTypes from 'prop-types';
 /** @jsxRuntime classic */ // changing this in the future. Remove the line to see the error
 /** @jsx jsx */
