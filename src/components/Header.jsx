@@ -41,12 +41,12 @@ const Header = () => (
       <Link to={`/search/${config.defaultSubreddit}`}>
         Search
       </Link>
-      <Link to="/#how-it-works">
+      <a href="/#how-it-works">
         How it works
-      </Link>
-      <Link to="/#about">
+      </a>
+      <a href="/#about">
         About
-      </Link>
+      </a>
     </Links>
   </Navigation>
 );

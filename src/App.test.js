@@ -1,6 +1,8 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
-import { cleanup, render, screen } from '@testing-library/react';
+import {
+  cleanup, render, screen, within,
+} from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
@@ -40,5 +42,18 @@ describe('hero section', () => {
     // going back to the home page because unable to change history manually
     const homeLink = screen.getByRole('link', { name: /logo\.svg/i });
     userEvent.click(homeLink);
+  });
+});
+
+describe('info section', () => {
+  test('test if "https://profy.dev" can be accessed on about section', () => {
+    setup();
+    const article = screen.getByRole('article');
+    expect(within(article).getByRole('link', { name: /profy.dev/i })).toHaveAttribute('href', 'https://profy.dev');
+  });
+  test('test if "https://profy.dev/employers" can be accessed on about section', () => {
+    setup();
+
+    expect(screen.getByRole('link', { name: /click here for more information./i })).toHaveAttribute('href', 'https://profy.dev/employers');
   });
 });
