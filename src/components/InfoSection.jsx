@@ -2,9 +2,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import SROnly from './SROnly.style';
 
-const Posts = styled.section`
+const Posts = styled.article`
   display: flex;
   flex-direction: column;
   font-size: clamp(.75rem, 1vw + 1rem, 1.6rem);
@@ -64,7 +63,6 @@ const InfoSection = () => (
         {' '}
         <PostLink href="https://profy.dev">
           profy.dev
-          <SROnly>#about</SROnly>
         </PostLink>
         {' '}
         with the goal to implement a
