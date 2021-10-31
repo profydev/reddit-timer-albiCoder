@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import SROnly from './SROnly.style';
 
 const Posts = styled.section`
   display: flex;
@@ -61,7 +62,10 @@ const InfoSection = () => (
       <p>
         This app was created during a course on
         {' '}
-        <PostLink href="https://profy.dev">profy.dev</PostLink>
+        <PostLink href="https://profy.dev">
+          profy.dev
+          <SROnly>#about</SROnly>
+        </PostLink>
         {' '}
         with the goal to implement a
         pixel-perfect real-world application with professional workflows and tools like Kanban,

@@ -42,3 +42,16 @@ describe('hero section', () => {
     userEvent.click(homeLink);
   });
 });
+
+describe('info section', () => {
+  test('test if "https://profy.dev" can be accessed on about section', () => {
+    setup();
+
+    expect(screen.getByRole('link', { name: /profy.dev #about/i })).toHaveAttribute('href', 'https://profy.dev');
+  });
+  test('test if "https://profy.dev/employers" can be accessed on about section', () => {
+    setup();
+
+    expect(screen.getByRole('link', { name: /click here for more information./i })).toHaveAttribute('href', 'https://profy.dev/employers');
+  });
+});
