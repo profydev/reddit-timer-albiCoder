@@ -10,7 +10,7 @@ const HomePageContent = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 4rem;
+  margin-bottom: 7rem;
 `;
 const Search = styled.div`
   display: flex;
@@ -44,13 +44,13 @@ top: -1.1rem;
 `;
 const JavascriptText = styled(Link)`
 font-size: 1.6rem;
-top: 2rem;
+top: 3.5rem;
 position: relative;
 `;
 const Table = styled(Link)`
   display: flex;
   width: 77.5%;
-    top: 4rem;
+    top: 7rem;
     position: relative;
 `;
 const TableImg = styled.img`
