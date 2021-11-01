@@ -33,11 +33,11 @@ const cases = [['Button redirects', 'link', /show me the best time/i],
 describe('hero section', () => {
   test.each(cases)('%s to search page', (testTitle, elementRole, regex) => {
     setup();
-
+    screen.debug();
     const searchLink = screen.getByRole(elementRole, { name: regex });
     userEvent.click(searchLink);
 
-    expect(screen.getByRole('heading', { name: /search page/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /find the best time for a subreddit/i })).toBeInTheDocument();
     // test ends to the line above
     // going back to the home page because unable to change history manually
     const homeLink = screen.getByRole('link', { name: /logo\.svg/i });

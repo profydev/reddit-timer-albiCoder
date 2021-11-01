@@ -3,6 +3,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
+import icon from '../images/redditIcon.svg';
+
 const FootNav = styled.footer`
   display: flex;
   justify-content: space-between;
@@ -30,7 +32,7 @@ const Footer = () => (
     </FootLink>
     <Link to="/">
       <RedditLogo>
-        <Img src="images/redditIcon.svg" alt="reddit icon" />
+        <Img src={icon} alt="reddit icon" />
       </RedditLogo>
     </Link>
     <FootLink>
