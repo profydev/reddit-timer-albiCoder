@@ -24,6 +24,7 @@ padding: .9rem 1.5rem .7rem 1.5rem;
 font-weight: 500;
 cursor: pointer;
 position: relative;
+text-transform: uppercase;
 `;
 const PageWrapper = styled.main`
   display: flex;

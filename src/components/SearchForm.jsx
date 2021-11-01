@@ -1,9 +1,9 @@
 /* eslint-disable linebreak-style */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
+import { useParams } from 'react-router';
 
 import * as S from './Styled.components';
-import config from '../config';
 
 const Form = styled.form`
 display: flex;
@@ -23,7 +23,8 @@ display: block;
 `;
 
 const SearchForm = () => {
-  const [subreddit, setSubreddit] = useState(config.defaultSubreddit);
+  const params = useParams();
+  const [subreddit, setSubreddit] = useState(params.subreddit);
 
   function handleSubmit() {
 
@@ -31,6 +32,10 @@ const SearchForm = () => {
   function handleChange(event) {
     setSubreddit(event.target.value);
   }
+
+  useEffect(() => {
+    setSubreddit(params.subreddit);
+  }, [params.subreddit]);
 
   return (
     <div>
