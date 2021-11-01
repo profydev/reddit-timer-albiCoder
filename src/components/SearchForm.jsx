@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { useParams, useHistory } from 'react-router';
 
@@ -46,6 +46,10 @@ const SearchForm = () => {
   function handleChange(event) {
     setSubreddit(event.target.value);
   }
+
+  useEffect(() => {
+    setSubreddit(params.subreddit);
+  }, [params.subreddit]);
 
   return (
     <div>
