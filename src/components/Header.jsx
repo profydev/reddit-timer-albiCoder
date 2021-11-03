@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 
 import SROnly from './SROnly.style';
 import config from '../config';
+import icon from '../images/logo.svg';
 
 const Navigation = styled.header`
   display: flex;
@@ -33,7 +34,7 @@ const Header = () => (
   <Navigation>
     <Link to="/">
       <Logo>
-        <Img src="images/logo.svg" alt="reddit logo" />
+        <Img src={icon} alt="reddit logo" />
       </Logo>
       <SROnly>logo.svg</SROnly>
     </Link>
