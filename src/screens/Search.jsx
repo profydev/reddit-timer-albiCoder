@@ -1,24 +1,22 @@
 /* eslint-disable linebreak-style */
-import React, { useEffect } from 'react';
+/* eslint-disable quote-props */
+import React, { useState } from 'react';
 import * as S from '../components/Styled.components';
 
 import SearchForm from '../components/SearchForm';
+import HeatMap from '../components/HeatMap';
+import LoadingBox from '../components/LoadingBox';
+import Table from '../components/Table';
 
 const Search = () => {
-  // const [searchData, setSearchData] = useState({});
-
-  // async function getData(subreddit) {
-  //   const response = await fetch(`https://www.reddit.com/r/${subreddit}/top.json?t=year&limit=100`);
-  //   console.log(response);
-  // }
-  // // get data when the page renders
-  useEffect(() => {
-    // getData();
-  }, []);
-
+  const [subredditData, setSubredditData] = useState(null);
+  const [selectedData, setSelectedData] = useState(null);
   return (
     <S.PageWrapper>
-      <SearchForm />
+      <SearchForm setSearchData={setSubredditData} />
+      {!subredditData && <LoadingBox />}
+      {subredditData && <HeatMap searchData={subredditData} setSelectedData={setSelectedData} />}
+      {selectedData && <Table data={selectedData} />}
     </S.PageWrapper>
   );
 };

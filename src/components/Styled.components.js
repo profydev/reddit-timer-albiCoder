@@ -31,6 +31,8 @@ const PageWrapper = styled.main`
   flex-direction: column;
   align-items: center;
   margin-bottom: 7rem;
+  justify-content: space-between;
+  gap: max(5vh, 2rem);
 `;
 
 export {
