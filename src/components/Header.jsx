@@ -17,7 +17,7 @@ const Navigation = styled.header`
 const Logo = styled.div`
   width: 15rem;
   height: 3.6rem;
-  `;
+`;
 const Links = styled.div`
   display: flex;
   justify-content: space-between;

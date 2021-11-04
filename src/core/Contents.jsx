@@ -7,7 +7,7 @@ import Search from '../screens/Search';
 const Contents = () => (
   <Switch>
     <Route path="/" component={Home} exact />
-    <Route path="/search/:subreddit" component={Search} />
+    <Route path="/search/:subreddit?" component={Search} />
   </Switch>
 );
 

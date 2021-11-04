@@ -1,13 +1,13 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/require-default-props */
 /* eslint-disable max-len */
-/* eslint-disable linebreak-style */
 /* eslint-disable quote-props */
 import React, { memo } from 'react';
 import styled from '@emotion/styled';
 // import PropTypes from 'prop-types';
 
-import Cell from './Cell';
+import HeatMapCell from './HeatMapCell';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ const Row = ({ data, setSelectedData }) => (
   <Wrapper>
     {
       hours.map((hour) => (
-        <Cell key={hour} data={data ? data[hour] : null} setSelectedData={setSelectedData} />
+        <HeatMapCell key={hour} postsInADayHour={data ? data[hour] : null} setSelectedData={setSelectedData} />
       ))
     }
   </Wrapper>

@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable linebreak-style */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from '@emotion/styled';
 
@@ -21,9 +21,9 @@ const MyTable = styled.table`
   border-collapse: collapse;
 `;
 const Tr = styled.tr`
-width: 100%;
-border: .1rem lightgrey solid;
-padding: .25rem;
+  width: 100%;
+  border: .1rem lightgrey solid;
+  padding: .25rem;
 `;
 const Th = styled.th`
   text-align: left;

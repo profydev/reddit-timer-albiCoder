@@ -3,18 +3,18 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const Wrapper = styled.div`
-  width: 20vw;
-  height: 20vw;
+  width: min(20rem, 20vw);
+  height: min(20rem, 20vw);
 `;
 const Center = styled.div`
-  width: 15rem;
-  height: 15rem;
+  width: min(15rem, 15vw);
+  height: min(15rem, 15vw);
   border-radius: 50%;
   background-color: white;
   border: 1rem solid #fdb755;
   position: relative;
-  top: 25%;
-  left: 25%;
+  top: 12.5%;
+  left: 12.5%;
   transform: translate(-50%, -50%);
   animation: spin 2s linear infinite;
   @keyframes spin {
@@ -34,7 +34,7 @@ const Center = styled.div`
 `;
 
 const LoadingBox = () => (
-  <Wrapper>
+  <Wrapper role="progressbar" aria-valuetext="loading spinner">
     <Center />
   </Wrapper>
 );

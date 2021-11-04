@@ -6,18 +6,17 @@ import PropTypes from 'prop-types';
 const Wrapper = styled.div`
   display: flex;
   border: .1rem solid #f3f3f3;
-  height: 5.2rem;
+  height: min(5.2rem, 3.25vw);
 `;
 const Cell = styled.div`
-width: 8rem;
+  width: min(8rem, 5vw);
   background: linear-gradient(#FEFEFE, #E9E9E9);
   text-align: center;
   vertical-align: middle;
-  line-height: 5.2rem;
-  font-size: 1.4rem;
+  line-height: min(5.2rem, 3.25vw);
+  font-size: clamp(.1rem, .1rem + 1vw, 1.4rem);
   font-weight: 600;
   color: #787878;
-
 `;
 
 const HourCell = ({ hour }) => (

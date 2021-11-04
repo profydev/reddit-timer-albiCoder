@@ -1,6 +1,6 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable react/prop-types */
 /* eslint-disable quote-props */
-/* eslint-disable linebreak-style */
 import React, { memo } from 'react';
 import styled from '@emotion/styled';
 // import PropTypes from 'prop-types';
@@ -14,24 +14,22 @@ const Wrapper = styled.div`
   align-items: flex-end;
 `;
 
-const CellsSection = styled.div`
-`;
-
 const HeatMap = ({ searchData, setSelectedData }) => (
   <Wrapper>
     <DaysColumn />
     <div>
       <HoursRow />
-      <CellsSection>
-        <Row data={searchData?.Sunday} setSelectedData={setSelectedData} />
-        <Row data={searchData?.Monday} setSelectedData={setSelectedData} />
-        <Row data={searchData?.Tuesday} setSelectedData={setSelectedData} />
-        <Row data={searchData?.Wednesday} setSelectedData={setSelectedData} />
-        <Row data={searchData?.Thursday} setSelectedData={setSelectedData} />
-        <Row data={searchData?.Friday} setSelectedData={setSelectedData} />
-        <Row data={searchData?.Saturday} setSelectedData={setSelectedData} />
-      </CellsSection>
+      <div>
+        <Row data={searchData.Sunday} setSelectedData={setSelectedData} />
+        <Row data={searchData.Monday} setSelectedData={setSelectedData} />
+        <Row data={searchData.Tuesday} setSelectedData={setSelectedData} />
+        <Row data={searchData.Wednesday} setSelectedData={setSelectedData} />
+        <Row data={searchData.Thursday} setSelectedData={setSelectedData} />
+        <Row data={searchData.Friday} setSelectedData={setSelectedData} />
+        <Row data={searchData.Saturday} setSelectedData={setSelectedData} />
+      </div>
     </div>
+    <div>heatmap</div>
   </Wrapper>
 );
 // HeatMap.propTypes = {

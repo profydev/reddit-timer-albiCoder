@@ -3,7 +3,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-import icon from '../images/redditIcon.svg';
+import redditIcon from '../images/redditIcon.svg';
 
 const FootNav = styled.footer`
   display: flex;
@@ -15,9 +15,6 @@ const FootNav = styled.footer`
 `;
 const FootLink = styled.div`
   width: 11rem;
-`;
-const RedditLogo = styled.div`
-  
 `;
 const Img = styled.img`
   width: 100%;
@@ -31,9 +28,9 @@ const Footer = () => (
       </a>
     </FootLink>
     <Link to="/">
-      <RedditLogo>
-        <Img src={icon} alt="reddit icon" />
-      </RedditLogo>
+      <div>
+        <Img src={redditIcon} alt="reddit icon" />
+      </div>
     </Link>
     <FootLink>
       <Link to="/terms" style={{ float: 'right' }}>
