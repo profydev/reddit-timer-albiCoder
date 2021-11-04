@@ -29,7 +29,6 @@ const HeatMap = ({ searchData, setSelectedData }) => (
         <Row data={searchData.Saturday} setSelectedData={setSelectedData} />
       </div>
     </div>
-    <div>heatmap</div>
   </Wrapper>
 );
 // HeatMap.propTypes = {

@@ -10,8 +10,9 @@ const FootNav = styled.footer`
   justify-content: space-between;
   height: 10rem;
   align-items: center;
-  padding: 0 25rem;
+  padding: 0 min(25rem, 15vw);
   font-size: 1.4rem;
+  margin-top: auto;
 `;
 const FootLink = styled.div`
   width: 11rem;

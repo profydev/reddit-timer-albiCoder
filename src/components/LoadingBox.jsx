@@ -30,6 +30,10 @@ const Center = styled.div`
     position: absolute;
     transform: translate(-25%, -25%) rotate(-1deg);
     height: 8rem;
+    @media (max-width: 50rem) {
+      width: 4.5rem;
+      height: 4.5rem;
+    }
   }
 `;
 

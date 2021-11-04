@@ -31,16 +31,16 @@ const Th = styled.th`
   height: 3rem;
   font-size: 1.4rem;
   padding: 1rem;
-  max-width: min(40rem, 40vw);
-  min-width: min(12rem, 10vw);
+  max-width: min(40rem, 30vw);
+  min-width: min(12rem, 5vw);
 `;
 const Td = styled.td`
   border: .1rem lightgrey solid;
   white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;
-  max-width: min(40rem, 40vw);
-  min-width: min(12rem, 10vw);
+  max-width: min(40rem, 30vw);
+  min-width: min(12rem, 5vw);
   height: 3rem;
   font-size: 1.4rem;
   padding: 1rem;
