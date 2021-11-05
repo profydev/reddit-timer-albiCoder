@@ -18,6 +18,11 @@ const Wrapper = styled.div`
   &:hover {
     border: .2rem solid black;
   }
+  @media (max-width: 45em) {
+    width: 3.5vw;
+    height: 3.5vw;
+    line-height: 3.5vw;
+  }
 `;
 // all colors that heatmap cells can have
 const colors = {

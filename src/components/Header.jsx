@@ -15,6 +15,9 @@ const Navigation = styled.header`
   align-items: center;
   height: 10rem;
   padding: 0 8rem;
+  @media (max-width: 30em) {
+    padding: 0 1rem;
+  }
 `;
 const Logo = styled.div`
   width: 15rem;
@@ -29,13 +32,13 @@ const Links = styled.div`
   & > a {
     color: inherit;
   }
-  @media (max-width: 55rem) {
+  @media (max-width: 55em) {
     flex-direction: column;
     height: 100vh;
     top: 0;
     right: 0;
     width:  min(70vw, 36rem);
-    position: absolute;
+    position: fixed;
     justify-content: flex-start;
     padding-top: 10rem;
     background: rgba(0, 0, 0, 0.85);
@@ -45,6 +48,7 @@ const Links = styled.div`
     font-size: 2rem;
     color: #f4f4f4;
     font-weight: 700;
+    
     transform: translateX(${({ open }) => (open ? '0%' : '100%')});
     transition: transform 500ms ease-in-out;
   }
@@ -69,7 +73,10 @@ const HamburgerButton = styled.button`
   aspect-ratio: 1;
   background-repeat: no-repeat;
   background-image: url(${({ open }) => (!open ? hamburgerButtonImage : closeButtonImage)});
-  @media (max-width: 55rem) {
+  @media (max-width: 30rem) {
+    right: 1rem;
+  }
+  @media (max-width: 55em) {
     display: block;
   }
 `;

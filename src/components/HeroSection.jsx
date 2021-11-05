@@ -13,9 +13,12 @@ const Search = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 12.875rem;
+  @media (max-width: 30em) {
+    margin: 0 1rem;
+  }
 `;
 const Subheader = styled.p`
-  font-size: 1.6rem;
+  font-size: clamp(1rem, 1rem + 1vw, 1.6rem);
   top: -4.1rem;
   position: relative;
 `;
@@ -24,13 +27,17 @@ const TableLinkImgContainer = styled(Link)`
   width: 77.5%;
   top: 7rem;
   position: relative;
+  @media (max-width: 45em) {
+    width: calc(100% - 2rem);
+    top: 2rem;
+  }
 `;
 const TableImg = styled.img`
   width: 100%;
 `;
 
 const HeroSection = () => (
-  <S.PageWrapper>
+  <S.SearchPageContentWrapper>
     <Search>
       <S.Headline>
         No reactions to your reddit posts?
@@ -49,7 +56,7 @@ const HeroSection = () => (
       <TableImg src={heatMap} alt="heat map" />
       <SROnly>Table</SROnly>
     </TableLinkImgContainer>
-  </S.PageWrapper>
+  </S.SearchPageContentWrapper>
 );
 
 export default HeroSection;

@@ -17,6 +17,11 @@ const Cell = styled.div`
   line-height: min(4rem, 2.5vw);
   text-align: center;
   vertical-align: middle;
+  @media (max-width: 45em) {
+    width: 13.475vw;
+    height: 3.5vw;
+    line-height: 3.5vw;
+  }
 `;
 const DayCell = ({ name }) => (
   <Cell>

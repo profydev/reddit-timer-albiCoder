@@ -33,6 +33,15 @@ const Th = styled.th`
   padding: 1rem;
   max-width: min(40rem, 30vw);
   min-width: min(12rem, 5vw);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media (max-width: 38em) {
+    max-width: 1rem;
+  }
+  @media (max-width: 25em) {
+    padding: 0.1rem;
+  }
 `;
 const Td = styled.td`
   border: .1rem lightgrey solid;
@@ -44,6 +53,14 @@ const Td = styled.td`
   height: 3rem;
   font-size: 1.4rem;
   padding: 1rem;
+  @media (max-width: 38em) {
+    max-width: 10rem;
+  }
+  @media (max-width: 25em) {
+    max-width: 25vw;
+    min-width: 10vw;
+    padding: 0.1rem;
+  }
 `;
 
 const Table = ({ data }) => (

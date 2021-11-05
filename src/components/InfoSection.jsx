@@ -15,12 +15,15 @@ const Posts = styled.article`
   margin-top: 20vh;
   left: -2.5rem;
   margin-bottom: 9.4vh;
+  @media (max-width: 45em) {
+    margin: 3rem 0;
+  }
 `;
 const PostCard = styled.div`
   width: min(65ch, 100% - 8rem);
 `;
 const CardTitle = styled.span`
-  font-size: 2.4rem;
+  font-size: clamp(1rem, 1.4rem + 1vw, 2.4rem);
   line-height: 6.5rem;
   font-family: 'Bitter';
   color: #000;

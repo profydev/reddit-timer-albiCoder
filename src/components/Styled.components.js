@@ -15,7 +15,7 @@ const DefaultSubredditText = styled(Link)`
   position: relative;
 `;
 const SearchButton = styled(Link)`
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 1.2rem + 1vw, 1.4rem);
   background-color: #FDB755;
   border-radius: .5rem;
   color: #f4f4f4;
@@ -26,7 +26,7 @@ const SearchButton = styled(Link)`
   position: relative;
   text-transform: uppercase;
 `;
-const PageWrapper = styled.main`
+const SearchPageContentWrapper = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,5 +36,5 @@ const PageWrapper = styled.main`
 `;
 
 export {
-  Headline, DefaultSubredditText, SearchButton, PageWrapper,
+  Headline, DefaultSubredditText, SearchButton, SearchPageContentWrapper,
 };

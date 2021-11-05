@@ -13,6 +13,9 @@ const FootNav = styled.footer`
   padding: 0 min(25rem, 15vw);
   font-size: 1.4rem;
   margin-top: auto;
+  @media (max-width: 30em) {
+    padding: 0 1rem;
+  }
 `;
 const FootLink = styled.div`
   width: 11rem;

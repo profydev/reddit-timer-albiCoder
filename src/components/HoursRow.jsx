@@ -17,6 +17,11 @@ const Cell = styled.div`
   font-size: clamp(.1rem, .1rem + 1vw, 1.4rem);
   font-weight: 600;
   color: #787878;
+  @media (max-width: 45em) {
+    width: 7vw;
+    height: 7vw;
+    line-height: 4.55vw;
+  }
 `;
 
 const HourCell = ({ hour }) => (
