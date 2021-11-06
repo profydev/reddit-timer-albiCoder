@@ -1,5 +1,4 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable react/prop-types */
 import React, { memo } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
@@ -15,6 +14,7 @@ const Wrapper = styled.div`
   color: #fff;
   cursor: pointer;
   background-color: ${(props) => props.background_color};
+  border: .2rem solid ${(props) => props.background_color};
   &:hover {
     border: .2rem solid black;
   }
@@ -36,14 +36,26 @@ const colors = {
   selected: '#3984A3',
 };
 
-const HeatMapCell = ({ postsInADayHour, setSelectedData }) => {
-  if (!postsInADayHour) return;
+const HeatMapCell = ({
+  postsInADayHour, setSelectedData, selectedCell, setSelectedCell, maxNumberOfPosts,
+}) => {
+  // we are going to display as selected only non-zero cells
+  function getThisCellDayTime(posts) { // this does not get day time of zero element arrays
+    // consider going back to 3D array
+    if (posts.length === 0) return null;
+    return { day: posts[0].day, time: posts[0].time };
+  }
+  function isCellSelected(posts) {
+    if (!selectedCell) return false;
+    const thisCell = getThisCellDayTime(posts);
+    if (thisCell && thisCell.day === selectedCell.day && thisCell.time === selectedCell.time) {
+      return true;
+    }
+    return false;
+  }
   // get number of posts
   const { length } = postsInADayHour;
-  const selected = false;
-  // this value should be dynamically generated
-  // by a function that get the max length of array for each cell
-  const max = 5; // the maximum number of posts for a day and hour
+  const selected = isCellSelected(postsInADayHour);
 
   // get background color for the corresponding posts number
   function getColorForCellValue(maxValue, cellValue, isSelected) {
@@ -66,18 +78,28 @@ const HeatMapCell = ({ postsInADayHour, setSelectedData }) => {
     }
     return colors.heavier;
   }
+
+  function handleClick() {
+    setSelectedData(postsInADayHour.length !== 0 ? postsInADayHour : null);
+    setSelectedCell(getThisCellDayTime(postsInADayHour));
+  }
+
   // eslint-disable-next-line consistent-return
   return (
     <Wrapper
-      background_color={() => getColorForCellValue(max, length, selected)}
-      onClick={() => setSelectedData(postsInADayHour)}
+      background_color={() => getColorForCellValue(maxNumberOfPosts, length, selected)}
+      onClick={handleClick}
     >
       {length}
     </Wrapper>
   );
 };
+HeatMapCell.defaultProps = {
+  selectedCell: null,
+};
 HeatMapCell.propTypes = {
   postsInADayHour: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     permalink: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -86,7 +108,13 @@ HeatMapCell.propTypes = {
     time: PropTypes.string.isRequired,
     day: PropTypes.string.isRequired,
   })).isRequired,
-  // setSelectedData: PropTypes.func.isRequired,
+  setSelectedData: PropTypes.func.isRequired,
+  selectedCell: PropTypes.shape({
+    day: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired,
+  }),
+  setSelectedCell: PropTypes.func.isRequired,
+  maxNumberOfPosts: PropTypes.number.isRequired,
 };
 
 export default memo(HeatMapCell);

@@ -1,7 +1,9 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 /* eslint-disable react/prop-types */
 /* eslint-disable quote-props */
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import styled from '@emotion/styled';
 // import PropTypes from 'prop-types';
 
@@ -14,23 +16,85 @@ const Wrapper = styled.div`
   align-items: flex-end;
 `;
 
-const HeatMap = ({ searchData, setSelectedData }) => (
-  <Wrapper>
-    <DaysColumn />
-    <div>
-      <HoursRow />
+const HeatMap = ({ searchData, selectedData, setSelectedData }) => {
+  function getSelectedCellDayTime(selectedPosts) {
+    if (!selectedPosts) return null;
+    return { 'day': selectedPosts[0].day, 'time': selectedPosts[0].time };
+  }
+  function getMaxNumPostsForDayTime(subredditResult) {
+    let max = 0;
+    for (const day in subredditResult) {
+      for (const hour in subredditResult[day]) {
+        if (max < subredditResult[day][hour].length) {
+          max = subredditResult[day][hour].length;
+        }
+      }
+    }
+    return max;
+  }
+
+  const [selectedCell, setSelectedCell] = useState(getSelectedCellDayTime(selectedData));
+  const [maxNumberOfPosts] = useState(getMaxNumPostsForDayTime(searchData));
+  return (
+    <Wrapper>
+      <DaysColumn />
       <div>
-        <Row data={searchData.Sunday} setSelectedData={setSelectedData} />
-        <Row data={searchData.Monday} setSelectedData={setSelectedData} />
-        <Row data={searchData.Tuesday} setSelectedData={setSelectedData} />
-        <Row data={searchData.Wednesday} setSelectedData={setSelectedData} />
-        <Row data={searchData.Thursday} setSelectedData={setSelectedData} />
-        <Row data={searchData.Friday} setSelectedData={setSelectedData} />
-        <Row data={searchData.Saturday} setSelectedData={setSelectedData} />
+        <HoursRow />
+        <div>
+          <Row
+            data={searchData.Sunday}
+            setSelectedData={setSelectedData}
+            selectedCell={selectedCell}
+            setSelectedCell={setSelectedCell}
+            maxNumberOfPosts={maxNumberOfPosts}
+          />
+          <Row
+            data={searchData.Monday}
+            setSelectedData={setSelectedData}
+            selectedCell={selectedCell}
+            setSelectedCell={setSelectedCell}
+            maxNumberOfPosts={maxNumberOfPosts}
+          />
+          <Row
+            data={searchData.Tuesday}
+            setSelectedData={setSelectedData}
+            selectedCell={selectedCell}
+            setSelectedCell={setSelectedCell}
+            maxNumberOfPosts={maxNumberOfPosts}
+          />
+          <Row
+            data={searchData.Wednesday}
+            setSelectedData={setSelectedData}
+            selectedCell={selectedCell}
+            setSelectedCell={setSelectedCell}
+            maxNumberOfPosts={maxNumberOfPosts}
+          />
+          <Row
+            data={searchData.Thursday}
+            setSelectedData={setSelectedData}
+            selectedCell={selectedCell}
+            setSelectedCell={setSelectedCell}
+            maxNumberOfPosts={maxNumberOfPosts}
+          />
+          <Row
+            data={searchData.Friday}
+            setSelectedData={setSelectedData}
+            selectedCell={selectedCell}
+            setSelectedCell={setSelectedCell}
+            maxNumberOfPosts={maxNumberOfPosts}
+          />
+          <Row
+            data={searchData.Saturday}
+            setSelectedData={setSelectedData}
+            selectedCell={selectedCell}
+            setSelectedCell={setSelectedCell}
+            maxNumberOfPosts={maxNumberOfPosts}
+          />
+        </div>
       </div>
-    </div>
-  </Wrapper>
-);
+    </Wrapper>
+  );
+};
 // HeatMap.propTypes = {
 //   data: PropTypes.arrayOf(PropTypes.shape({
 //     author: PropTypes.string.isRequired,
