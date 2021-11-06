@@ -8,15 +8,20 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 const Cell = styled.div`
-  height: 4rem;
-  width: 15.4rem;
+  height: min(4rem, 2.5vw);
+  width: min(15.4rem, 9.625vw);
   background-color: #1E2537;
   color: #fff;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: clamp(.1rem, .1rem + 1vw, 1.5rem);
+  line-height: min(4rem, 2.5vw);
   text-align: center;
   vertical-align: middle;
-  line-height: 4rem;
+  @media (max-width: 45em) {
+    width: 13.475vw;
+    height: 3.5vw;
+    line-height: 3.5vw;
+  }
 `;
 const DayCell = ({ name }) => (
   <Cell>

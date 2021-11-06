@@ -15,12 +15,15 @@ const Posts = styled.article`
   margin-top: 20vh;
   left: -2.5rem;
   margin-bottom: 9.4vh;
+  @media (max-width: 45em) {
+    margin: 3rem 0;
+  }
 `;
 const PostCard = styled.div`
   width: min(65ch, 100% - 8rem);
 `;
 const CardTitle = styled.span`
-  font-size: 2.4rem;
+  font-size: clamp(1rem, 1.4rem + 1vw, 2.4rem);
   line-height: 6.5rem;
   font-family: 'Bitter';
   color: #000;
@@ -29,9 +32,7 @@ const CardContent = styled.div`
   top: -1rem;
   position: relative;
 `;
-const PostLink = styled.a`
 
-`;
 const Post = ({ id, title, children }) => (
   <PostCard id={id}>
     <CardTitle>{title}</CardTitle>
@@ -61,15 +62,15 @@ const InfoSection = () => (
       <p>
         This app was created during a course on
         {' '}
-        <PostLink href="https://profy.dev">
+        <a href="https://profy.dev">
           profy.dev
-        </PostLink>
+        </a>
         {' '}
         with the goal to implement a
         pixel-perfect real-world application with professional workflows and tools like Kanban,
         Asana, Zeplin, GitHub, pull requests and code reviews.
         {' '}
-        <PostLink href="https://profy.dev/employers">Click here for more information.</PostLink>
+        <a href="https://profy.dev/employers">Click here for more information.</a>
         {' '}
       </p>
     </Post>

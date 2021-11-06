@@ -1,7 +1,9 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
 import {
-  cleanup, render, screen, within,
+  cleanup, render, screen,
+  within,
+  // within,
 } from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
@@ -28,16 +30,17 @@ const setup = (initialPath = '/') => {
   );
   return { history };
 };
+
 const cases = [['Button redirects', 'link', /show me the best time/i],
   ['Table image redirects', 'link', /table/i]];
 describe('hero section', () => {
   test.each(cases)('%s to search page', (testTitle, elementRole, regex) => {
     setup();
-    screen.debug();
     const searchLink = screen.getByRole(elementRole, { name: regex });
     userEvent.click(searchLink);
 
-    expect(screen.getByRole('heading', { name: /find the best time for a subreddit/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading',
+      { name: /find the best time for a subreddit/i })).toBeInTheDocument();
     // test ends to the line above
     // going back to the home page because unable to change history manually
     const homeLink = screen.getByRole('link', { name: /logo\.svg/i });
@@ -49,11 +52,30 @@ describe('info section', () => {
   test('test if "https://profy.dev" can be accessed on about section', () => {
     setup();
     const article = screen.getByRole('article');
-    expect(within(article).getByRole('link', { name: /profy.dev/i })).toHaveAttribute('href', 'https://profy.dev');
+    expect(within(article).getByRole('link',
+      { name: /profy.dev/i })).toHaveAttribute('href', 'https://profy.dev');
   });
   test('test if "https://profy.dev/employers" can be accessed on about section', () => {
     setup();
 
     expect(screen.getByRole('link', { name: /click here for more information./i })).toHaveAttribute('href', 'https://profy.dev/employers');
+  });
+});
+
+describe('search page', () => {
+  test('Type reactjs on search page', async () => {
+    // go to the search page
+    setup();
+    const searchPageLink = screen.getByRole('link', { name: /search/i });
+    userEvent.click(searchPageLink);
+
+    // get input field
+    const inputField = screen.getByLabelText('r /');
+    userEvent.type(inputField, 'reactjs');
+
+    const submitButton = screen.getByRole('button', { name: /search/i });
+    userEvent.click(submitButton);
+
+    expect(screen.getByRole('progressbar')).toBeInTheDocument();
   });
 });

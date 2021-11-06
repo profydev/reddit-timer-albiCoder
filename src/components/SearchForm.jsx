@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 import React, {
-  useCallback, useEffect, useState,
+  useCallback, useEffect, useMemo, useState,
 } from 'react';
 import styled from '@emotion/styled';
 import { useParams, useHistory } from 'react-router';
@@ -9,32 +9,35 @@ import PropType from 'prop-types';
 import * as S from './Styled.components';
 
 const Form = styled.form`
-display: flex;
-justify-content: center;
-align-items: center;
-width: 40vw;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 `;
 const InputLabel = styled.label`
   font-size: 1.6rem;
+  display: inline-flex;
+  align-items: center;
 `;
 const InputText = styled.input`
-display: block;
-    width: min(40rem, 40vw);
-    height: 3rem;
-    font-size: 1.5rem;
-    margin: 0 1rem;
+  display: block;
+  width: min(40rem, 40vw);
+  height: 3rem;
+  font-size: 1.5rem;
+  margin: 0 1rem;
 `;
 const SearchButton = styled.button`
-font-size: 1.4rem;
-background-color: #FDB755;
-border-radius: .5rem;
-color: #f4f4f4;
-border: solid .2rem #fdb755;
-padding: .9rem 1.5rem .7rem 1.5rem;
-font-weight: 500;
-cursor: pointer;
-position: relative;
-text-transform: uppercase;
+  font-size: 1.4rem;
+  background-color: #FDB755;
+  border-radius: .5rem;
+  color: #f4f4f4;
+  border: solid .2rem #fdb755;
+  padding: .9rem 1.5rem .7rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  text-transform: uppercase;
 `;
 
 const SearchForm = ({ setSearchData }) => {
@@ -79,12 +82,211 @@ const SearchForm = ({ setSearchData }) => {
     const indexOfColon = time.indexOf(':');
     return `${time.substring(0, indexOfColon)}:00${time.match(/(am)|(pm)/)[0]}`;
   }
-  const getData = useCallback(
-    async () => {
-      const response = await fetch(`https://www.reddit.com/r/${params.subreddit}/top.json?t=year&limit=100`);
-      const result = await response.json();
+
+  // the structure of data that are going to be displayed on heat map
+  // another solution would be to use a 3D array but that would
+  // require to use some extra instructions to tranform day and hour to array indexes
+  // but that would made prop-validation simplier
+  // we are going to supply an array of posts to each cell
+  // so when we click a cell this data should be displayed in a table
+  const redditPostsHeatMapData = useMemo(() => (
+    {
+      Sunday: {
+        '12:00am': [],
+        '1:00am': [],
+        '2:00am': [],
+        '3:00am': [],
+        '4:00am': [],
+        '5:00am': [],
+        '6:00am': [],
+        '7:00am': [],
+        '8:00am': [],
+        '9:00am': [],
+        '10:00am': [],
+        '11:00am': [],
+        '12:00pm': [],
+        '1:00pm': [],
+        '2:00pm': [],
+        '3:00pm': [],
+        '4:00pm': [],
+        '5:00pm': [],
+        '6:00pm': [],
+        '7:00pm': [],
+        '8:00pm': [],
+        '9:00pm': [],
+        '10:00pm': [],
+        '11:00pm': [],
+      },
+      Monday: {
+        '12:00am': [],
+        '1:00am': [],
+        '2:00am': [],
+        '3:00am': [],
+        '4:00am': [],
+        '5:00am': [],
+        '6:00am': [],
+        '7:00am': [],
+        '8:00am': [],
+        '9:00am': [],
+        '10:00am': [],
+        '11:00am': [],
+        '12:00pm': [],
+        '1:00pm': [],
+        '2:00pm': [],
+        '3:00pm': [],
+        '4:00pm': [],
+        '5:00pm': [],
+        '6:00pm': [],
+        '7:00pm': [],
+        '8:00pm': [],
+        '9:00pm': [],
+        '10:00pm': [],
+        '11:00pm': [],
+      },
+      Tuesday: {
+        '12:00am': [],
+        '1:00am': [],
+        '2:00am': [],
+        '3:00am': [],
+        '4:00am': [],
+        '5:00am': [],
+        '6:00am': [],
+        '7:00am': [],
+        '8:00am': [],
+        '9:00am': [],
+        '10:00am': [],
+        '11:00am': [],
+        '12:00pm': [],
+        '1:00pm': [],
+        '2:00pm': [],
+        '3:00pm': [],
+        '4:00pm': [],
+        '5:00pm': [],
+        '6:00pm': [],
+        '7:00pm': [],
+        '8:00pm': [],
+        '9:00pm': [],
+        '10:00pm': [],
+        '11:00pm': [],
+      },
+      Wednesday: {
+        '12:00am': [],
+        '1:00am': [],
+        '2:00am': [],
+        '3:00am': [],
+        '4:00am': [],
+        '5:00am': [],
+        '6:00am': [],
+        '7:00am': [],
+        '8:00am': [],
+        '9:00am': [],
+        '10:00am': [],
+        '11:00am': [],
+        '12:00pm': [],
+        '1:00pm': [],
+        '2:00pm': [],
+        '3:00pm': [],
+        '4:00pm': [],
+        '5:00pm': [],
+        '6:00pm': [],
+        '7:00pm': [],
+        '8:00pm': [],
+        '9:00pm': [],
+        '10:00pm': [],
+        '11:00pm': [],
+      },
+      Thursday: {
+        '12:00am': [],
+        '1:00am': [],
+        '2:00am': [],
+        '3:00am': [],
+        '4:00am': [],
+        '5:00am': [],
+        '6:00am': [],
+        '7:00am': [],
+        '8:00am': [],
+        '9:00am': [],
+        '10:00am': [],
+        '11:00am': [],
+        '12:00pm': [],
+        '1:00pm': [],
+        '2:00pm': [],
+        '3:00pm': [],
+        '4:00pm': [],
+        '5:00pm': [],
+        '6:00pm': [],
+        '7:00pm': [],
+        '8:00pm': [],
+        '9:00pm': [],
+        '10:00pm': [],
+        '11:00pm': [],
+      },
+      Friday: {
+        '12:00am': [],
+        '1:00am': [],
+        '2:00am': [],
+        '3:00am': [],
+        '4:00am': [],
+        '5:00am': [],
+        '6:00am': [],
+        '7:00am': [],
+        '8:00am': [],
+        '9:00am': [],
+        '10:00am': [],
+        '11:00am': [],
+        '12:00pm': [],
+        '1:00pm': [],
+        '2:00pm': [],
+        '3:00pm': [],
+        '4:00pm': [],
+        '5:00pm': [],
+        '6:00pm': [],
+        '7:00pm': [],
+        '8:00pm': [],
+        '9:00pm': [],
+        '10:00pm': [],
+        '11:00pm': [],
+      },
+      Saturday: {
+        '12:00am': [],
+        '1:00am': [],
+        '2:00am': [],
+        '3:00am': [],
+        '4:00am': [],
+        '5:00am': [],
+        '6:00am': [],
+        '7:00am': [],
+        '8:00am': [],
+        '9:00am': [],
+        '10:00am': [],
+        '11:00am': [],
+        '12:00pm': [],
+        '1:00pm': [],
+        '2:00pm': [],
+        '3:00pm': [],
+        '4:00pm': [],
+        '5:00pm': [],
+        '6:00pm': [],
+        '7:00pm': [],
+        '8:00pm': [],
+        '9:00pm': [],
+        '10:00pm': [],
+        '11:00pm': [],
+      },
+    }
+  ), []);
+
+  // get data
+  useEffect(() => {
+    const abortController = new AbortController();
+    const { signal } = abortController;
+
+    const getData = async () => {
+      const response = await fetch(`https://www.reddit.com/r/${params.subreddit}/top.json?t=year&limit=100`,
+        { signal });
+      const { data } = await response.json();
       // get only fields that we are interested
-      const filteredFields = result.data.children.map((el) => (
+      const filteredFields = data.children.map((el) => (
         {
           id: el.data.id,
           author: el.data.author,
@@ -96,207 +298,21 @@ const SearchForm = ({ setSearchData }) => {
           day: getDay(el.data.created_utc),
         }
       ));
-      // the structure of data that are going to be displayed on heat map
-      const datagrid = {
-        Sunday: {
-          '12:00am': [],
-          '1:00am': [],
-          '2:00am': [],
-          '3:00am': [],
-          '4:00am': [],
-          '5:00am': [],
-          '6:00am': [],
-          '7:00am': [],
-          '8:00am': [],
-          '9:00am': [],
-          '10:00am': [],
-          '11:00am': [],
-          '12:00pm': [],
-          '1:00pm': [],
-          '2:00pm': [],
-          '3:00pm': [],
-          '4:00pm': [],
-          '5:00pm': [],
-          '6:00pm': [],
-          '7:00pm': [],
-          '8:00pm': [],
-          '9:00pm': [],
-          '10:00pm': [],
-          '11:00pm': [],
-        },
-        Monday: {
-          '12:00am': [],
-          '1:00am': [],
-          '2:00am': [],
-          '3:00am': [],
-          '4:00am': [],
-          '5:00am': [],
-          '6:00am': [],
-          '7:00am': [],
-          '8:00am': [],
-          '9:00am': [],
-          '10:00am': [],
-          '11:00am': [],
-          '12:00pm': [],
-          '1:00pm': [],
-          '2:00pm': [],
-          '3:00pm': [],
-          '4:00pm': [],
-          '5:00pm': [],
-          '6:00pm': [],
-          '7:00pm': [],
-          '8:00pm': [],
-          '9:00pm': [],
-          '10:00pm': [],
-          '11:00pm': [],
-        },
-        Tuesday: {
-          '12:00am': [],
-          '1:00am': [],
-          '2:00am': [],
-          '3:00am': [],
-          '4:00am': [],
-          '5:00am': [],
-          '6:00am': [],
-          '7:00am': [],
-          '8:00am': [],
-          '9:00am': [],
-          '10:00am': [],
-          '11:00am': [],
-          '12:00pm': [],
-          '1:00pm': [],
-          '2:00pm': [],
-          '3:00pm': [],
-          '4:00pm': [],
-          '5:00pm': [],
-          '6:00pm': [],
-          '7:00pm': [],
-          '8:00pm': [],
-          '9:00pm': [],
-          '10:00pm': [],
-          '11:00pm': [],
-        },
-        Wednesday: {
-          '12:00am': [],
-          '1:00am': [],
-          '2:00am': [],
-          '3:00am': [],
-          '4:00am': [],
-          '5:00am': [],
-          '6:00am': [],
-          '7:00am': [],
-          '8:00am': [],
-          '9:00am': [],
-          '10:00am': [],
-          '11:00am': [],
-          '12:00pm': [],
-          '1:00pm': [],
-          '2:00pm': [],
-          '3:00pm': [],
-          '4:00pm': [],
-          '5:00pm': [],
-          '6:00pm': [],
-          '7:00pm': [],
-          '8:00pm': [],
-          '9:00pm': [],
-          '10:00pm': [],
-          '11:00pm': [],
-        },
-        Thursday: {
-          '12:00am': [],
-          '1:00am': [],
-          '2:00am': [],
-          '3:00am': [],
-          '4:00am': [],
-          '5:00am': [],
-          '6:00am': [],
-          '7:00am': [],
-          '8:00am': [],
-          '9:00am': [],
-          '10:00am': [],
-          '11:00am': [],
-          '12:00pm': [],
-          '1:00pm': [],
-          '2:00pm': [],
-          '3:00pm': [],
-          '4:00pm': [],
-          '5:00pm': [],
-          '6:00pm': [],
-          '7:00pm': [],
-          '8:00pm': [],
-          '9:00pm': [],
-          '10:00pm': [],
-          '11:00pm': [],
-        },
-        Friday: {
-          '12:00am': [],
-          '1:00am': [],
-          '2:00am': [],
-          '3:00am': [],
-          '4:00am': [],
-          '5:00am': [],
-          '6:00am': [],
-          '7:00am': [],
-          '8:00am': [],
-          '9:00am': [],
-          '10:00am': [],
-          '11:00am': [],
-          '12:00pm': [],
-          '1:00pm': [],
-          '2:00pm': [],
-          '3:00pm': [],
-          '4:00pm': [],
-          '5:00pm': [],
-          '6:00pm': [],
-          '7:00pm': [],
-          '8:00pm': [],
-          '9:00pm': [],
-          '10:00pm': [],
-          '11:00pm': [],
-        },
-        Saturday: {
-          '12:00am': [],
-          '1:00am': [],
-          '2:00am': [],
-          '3:00am': [],
-          '4:00am': [],
-          '5:00am': [],
-          '6:00am': [],
-          '7:00am': [],
-          '8:00am': [],
-          '9:00am': [],
-          '10:00am': [],
-          '11:00am': [],
-          '12:00pm': [],
-          '1:00pm': [],
-          '2:00pm': [],
-          '3:00pm': [],
-          '4:00pm': [],
-          '5:00pm': [],
-          '6:00pm': [],
-          '7:00pm': [],
-          '8:00pm': [],
-          '9:00pm': [],
-          '10:00pm': [],
-          '11:00pm': [],
-        },
-      };
-      filteredFields.map((el) => datagrid[el.day][getHour(el.time)].push(el));
-      // set data of heat map
-      setSearchData(datagrid);
-    }, [getDay, params.subreddit, setSearchData],
-  );
 
-  // get data
-  useEffect(() => {
+      filteredFields.map((el) => redditPostsHeatMapData[el.day][getHour(el.time)].push(el));
+      // set data of heat map
+      setSearchData(redditPostsHeatMapData);
+    };
     getData(params.subreddit);
-    return () => { };
-  }, [getData, params.subreddit]);
+    return () => {
+      abortController.abort();
+    };
+  }, [getDay, params.subreddit, redditPostsHeatMapData, setSearchData]);
 
   function handleSubmit(event) {
     event.preventDefault();
+    setSearchData(null);
     history.push(`/search/${subreddit}`);
-    getData(params.subreddit);
   }
 
   useEffect(() => {
@@ -310,9 +326,9 @@ const SearchForm = ({ setSearchData }) => {
       </S.Headline>
       <Form onSubmit={handleSubmit}>
         <InputLabel>
-          /r
+          r /
+          <InputText type="text" value={subreddit} onChange={handleChange} />
         </InputLabel>
-        <InputText type="text" value={subreddit} onChange={handleChange} />
         <SearchButton onClick={handleSubmit}>
           Search
         </SearchButton>

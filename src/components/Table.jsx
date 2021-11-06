@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable linebreak-style */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from '@emotion/styled';
 
@@ -21,9 +21,9 @@ const MyTable = styled.table`
   border-collapse: collapse;
 `;
 const Tr = styled.tr`
-width: 100%;
-border: .1rem lightgrey solid;
-padding: .25rem;
+  width: 100%;
+  border: .1rem lightgrey solid;
+  padding: .25rem;
 `;
 const Th = styled.th`
   text-align: left;
@@ -31,19 +31,36 @@ const Th = styled.th`
   height: 3rem;
   font-size: 1.4rem;
   padding: 1rem;
-  max-width: min(40rem, 40vw);
-  min-width: min(12rem, 10vw);
+  max-width: min(40rem, 30vw);
+  min-width: min(12rem, 5vw);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media (max-width: 38em) {
+    max-width: 1rem;
+  }
+  @media (max-width: 25em) {
+    padding: 0.1rem;
+  }
 `;
 const Td = styled.td`
   border: .1rem lightgrey solid;
   white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;
-  max-width: min(40rem, 40vw);
-  min-width: min(12rem, 10vw);
+  max-width: min(40rem, 30vw);
+  min-width: min(12rem, 5vw);
   height: 3rem;
   font-size: 1.4rem;
   padding: 1rem;
+  @media (max-width: 38em) {
+    max-width: 10rem;
+  }
+  @media (max-width: 25em) {
+    max-width: 25vw;
+    min-width: 10vw;
+    padding: 0.1rem;
+  }
 `;
 
 const Table = ({ data }) => (

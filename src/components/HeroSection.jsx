@@ -6,30 +6,38 @@ import { Link } from 'react-router-dom';
 import SROnly from './SROnly.style';
 import config from '../config';
 import * as S from './Styled.components';
+import heatMap from '../images/table.png';
 
 const Search = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 12.875rem;
+  @media (max-width: 30em) {
+    margin: 0 1rem;
+  }
 `;
 const Subheader = styled.p`
-font-size: 1.6rem;
-top: -4.1rem;
+  font-size: clamp(1rem, 1rem + 1vw, 1.6rem);
+  top: -4.1rem;
   position: relative;
 `;
-const Table = styled(Link)`
+const TableLinkImgContainer = styled(Link)`
   display: flex;
   width: 77.5%;
-    top: 7rem;
-    position: relative;
+  top: 7rem;
+  position: relative;
+  @media (max-width: 45em) {
+    width: calc(100% - 2rem);
+    top: 2rem;
+  }
 `;
 const TableImg = styled.img`
   width: 100%;
 `;
 
 const HeroSection = () => (
-  <S.PageWrapper>
+  <S.SearchPageContentWrapper>
     <Search>
       <S.Headline>
         No reactions to your reddit posts?
@@ -38,17 +46,17 @@ const HeroSection = () => (
         Great timing, great results! Find the best time to post on your subreddit.
       </Subheader>
       <S.SearchButton style={{ top: '-1.1rem' }} to={`/search/${config.defaultSubreddit}`}>
-        SHOW ME THE BEST TIME
+        Show me the best time
       </S.SearchButton>
       <S.DefaultSubredditText to={`/search/${config.defaultSubreddit}`}>
         {`r/${config.defaultSubreddit}`}
       </S.DefaultSubredditText>
     </Search>
-    <Table to={`/search/${config.defaultSubreddit}`}>
-      <TableImg src="images/table.png" alt="table" />
+    <TableLinkImgContainer to={`/search/${config.defaultSubreddit}`}>
+      <TableImg src={heatMap} alt="heat map" />
       <SROnly>Table</SROnly>
-    </Table>
-  </S.PageWrapper>
+    </TableLinkImgContainer>
+  </S.SearchPageContentWrapper>
 );
 
 export default HeroSection;
