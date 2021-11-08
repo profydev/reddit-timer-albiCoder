@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 import styled from '@emotion/styled';
 
+// display content for screen reader only (assistive technology)
 const SROnly = styled.span`
   position: absolute; 
   width: 1px;

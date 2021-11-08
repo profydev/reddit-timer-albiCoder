@@ -1,4 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Why did I build this project
+
+* To experience how professional teams build their projects
+* To create a good portfolio project by following the professional workflow
+## How did I build this project
+* Page was built based on Figma designs: [Screenshot of provided home page design](./src/images/readmeResource/homepage%20figma.png)
+* I worked with tasks on ClickUp: [Homepage hero-section task](./src/images/readmeResource/Hero%20section%20task.png)
+* Feature branches where created for each task
+* I used pull request and code reviewing before merging branches to main: [Example Pull Request](https://github.com/profydev/reddit-timer-albiCoder/pull/3)
+## How to navigate this project
+
+* Getting data from API and dealing with them: [Subreddit posts tranformation](https://github.com/albiCoder/reddit-timer-albiCoder/blob/main/src/components/SearchForm.jsx#L284)
+* Styled components responsive styles: [Mobile view of header](https://github.com/albiCoder/reddit-timer-albiCoder/blob/main/src/components/Header.jsx#L35)
+* Integrations tests with testing library: [Testing links to search page](https://github.com/albiCoder/reddit-timer-albiCoder/blob/main/src/App.test.js#L34)
+## Why I build the project this way
+
+* I have not used a state manager like Redux because for our application useState hook is enough. Most of the data resides on `Search page`, it propogates through few components so it can not be categorised as a complex system whose state should be managed with a library as Redux.
+* I used styled components instead of the _"evil"_ global css classes. With this library we can eliminate class name bugs, can easily define dynamic styles and export them through the app.
+
+## If I had more time I would change the following
+
+* I would review memoized components after reading this article [React Rendering by Alex Sidorenko](https://alexsidorenko.com/blog/react-render-cheat-sheet/)
+* I would add some end-to-end tests with cypress
 
 ## Available Scripts
 
