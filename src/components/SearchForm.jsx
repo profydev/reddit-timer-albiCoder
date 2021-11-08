@@ -84,11 +84,12 @@ const SearchForm = ({ setSearchData }) => {
   }
 
   // the structure of data that are going to be displayed on heat map
-  // another solution would be to use a 3D array but that would
+  // another solution would be to use a 2D array but that would
   // require to use some extra instructions to tranform day and hour to array indexes
   // but that would made prop-validation simplier
   // we are going to supply an array of posts to each cell
   // so when we click a cell this data should be displayed in a table
+  // its ugly but please bear with it
   const redditPostsHeatMapData = useMemo(() => (
     {
       Sunday: {
