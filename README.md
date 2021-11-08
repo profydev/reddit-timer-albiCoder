@@ -9,9 +9,9 @@
 * I used pull request and code reviewing before merging branches to main: [Example Pull Request](https://github.com/profydev/reddit-timer-albiCoder/pull/3)
 ## How to navigate this project
 
-* Getting data from API and dealing with them: [Subreddit posts tranformation]()
-* Styled components responsive styles: [Mobile view of header]()
-* Integrations tests with testing library: [Testing links to search page]()
+* Getting data from API and dealing with them: [Subreddit posts tranformation](https://github.com/albiCoder/reddit-timer-albiCoder/blob/main/src/components/SearchForm.jsx#L284)
+* Styled components responsive styles: [Mobile view of header](https://github.com/albiCoder/reddit-timer-albiCoder/blob/main/src/components/Header.jsx#L35)
+* Integrations tests with testing library: [Testing links to search page](https://github.com/albiCoder/reddit-timer-albiCoder/blob/main/src/App.test.js#L34)
 ## Why I build the project this way
 
 * I have not used a state manager like Redux because for our application useState hook is enough. Most of the data resides on `Search page`, it propogates through few components so it can not be categorised as a complex system whose state should be managed with a library as Redux.
